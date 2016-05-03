@@ -1,0 +1,27 @@
+<ion-view ng-controller="newGameCtrl as vm">
+  <ion-content class="has-header">
+    <ion-nav-buttons>
+      <button class="button button-icon icon ion-plus" menu-toggle="right" href="#/app/create"></button>
+    </ion-nav-buttons>
+    <div class="row header">
+      <div class="col  col-offset-10" ng-repeat="x in vm.color">
+        <a class="icon ion-happy"></a>
+        <h6>{{x.firstName}}</h6>
+      </div>
+    </div>
+    <div class="list" ng-repeat="x in vm.scores">
+      <div class="item-input row">
+        <div class="col col-offset-10 h6">
+          <textarea placeholder="Score">{{x.s1}}</textarea>
+        </div>
+        <div class="col col-offset-10 h6">
+          <textarea placeholder="Score">{{x.s2}}</textarea>
+        </div>
+        <div class="col col-offset-10 h6">
+          <textarea placeholder="Score">{{x.s3}}</textarea>
+        </div>
+      </div>
+    </div>
+    <button type="submit" ng-click="vm.addLine()">Add</button>
+  </ion-content>
+</ion-view>

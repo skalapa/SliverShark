@@ -1,0 +1,272 @@
+<ion-view ng-controller="newGameCtrl">
+  <ion-nav-title class="title-left" ng-bind="gameInfo_new.name"></ion-nav-title>
+  <ion-nav-buttons side="right">
+    <div class="buttons">
+      <button class="button button-clear icon ion-android-send pull-right" ng-click="showConfirm1()">Save</button>
+    </div>
+  </ion-nav-buttons>
+
+  <ion-content class="has-header" ng-repeat="x in detail">
+
+    <div class="item item-divider">
+      Game Info
+    </div>
+
+    <div class="card">
+      <label class="item item-input">
+        <span class="input-label" style="text-align: left">New Game Title</span>
+        <input type="text" style="text-align: right;  width: 100px" placeholder="Enter Title"
+               ng-model="gameInfo_new.name"/>
+      </label>
+      <label class="item item-input">
+        <span class="input-label" style="text-align: left">Amount</span>
+        <input type="text" style="text-align: right;  width: 100px" placeholder="Enter Amount"
+               ng-model="gameInfo_new.amount"/>
+      </label>
+      <label class="item item-input item-select">
+        <div class="input-label">
+          Rule
+        </div>
+        <select>
+          <option>200 Point Rule</option>
+          <option selected>Default Rule</option>
+          <option>120 Point Rule</option>
+        </select>
+      </label>
+      <button class="item-button-right button-clear icon ion-android-done pull-right"
+              ng-click="addGameInfo()">Ok
+      </button>
+    </div>
+
+    <div class="item item-divider">
+      Players List
+    </div>
+
+    <div class="list">
+      <div class="card">
+        <div class="row  my_scroll">
+          <div class="header col" ng-repeat="info in x.playerInfo">
+            <div class="col">
+              <div class="user-profile">
+                <ionic-letter-avatar avatarborder="true" data="{{info.firstName}}"></ionic-letter-avatar>
+                <input style="color: #e6db70" type="text" on-hold="removePlayer($index)"
+                       ng-model="info.firstName"> </input>
+                <!--<img ng-src={{x.photo}}>-->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <button class="button button-clear icon ion-android-add-circle pull-right" ng-click="toggle(true)">Add Player
+    </button>
+
+
+    <div class="list" ng-show="showme">
+      <div class="card">
+        <div class="item item-divider">
+          Player Info
+        </div>
+        <div>
+          <label class="item item-input">
+            <span class="input-label" style="text-align: left">First Name</span>
+            <input type="text" style="text-align: right;  width: 100px" placeholder="Enter First Name" ng-change=""
+                   ng-model="info.firstName"/>
+          </label>
+          <label class="item item-input">
+            <span class="input-label" style="text-align: left">Last Name</span>
+            <input type="text" style="text-align: right;  width: 100px" placeholder="Enter Last Name"
+                   ng-model="info.lastName"/>
+          </label>
+          <label class="item item-input">
+            <span class="input-label" style="text-align: left">Age</span>
+            <input type="text" style="text-align: right;  width: 100px" placeholder="Enter Age" ng-model="info.age"/>
+          </label>
+          <label class="item item-input">
+            <span class="input-label" style="text-align: left">Gender</span>
+            <input type="text" style="text-align: right;  width: 100px" placeholder="Enter Age" ng-model="info.gender"/>
+          </label>
+        </div>
+        <button class="item-button-right button-clear icon ion-android-done pull-right"
+                ng-click="addPlayer()">Ok
+        </button>
+      </div>
+    </div>
+
+    <div class="item item-divider">
+      Tracking
+    </div>
+    <div class="card">
+      <div class="list ">
+        <ul class="list">
+          <li class="item item-toggle">
+            Wild Card Tracking
+            <label class="toggle toggle-positive">
+              <input type="checkbox" value={{trackWildCard}}/>
+              <div class="track">
+                <div class="handle"></div>
+              </div>
+            </label>
+          </li>
+          <li class="item item-toggle">
+            Jackpot Tracking
+            <label class="toggle toggle-positive">
+              <input type="checkbox" ng-model="trackJackPot"/>
+              <div class="track">
+                <div class="handle"></div>
+              </div>
+            </label>
+          </li>
+          <li class="item item-toggle">
+            Location Tracking
+            <label class="toggle toggle-assertive">
+              <input type="checkbox" ng-model="trackLocation"/>
+              <div class="track">
+                <div class="handle"></div>
+              </div>
+            </label>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </ion-content>
+
+</ion-view>
+
+
+<!--
+<ion-view ng-controller="newGameCtrl">
+  <ion-nav-title class="title-left" ng-bind="gameInfo.name"></ion-nav-title>
+  <ion-nav-buttons side="right">
+    <div class="buttons">
+      <button class="button button-clear icon ion-android-send pull-right" ng-click="showConfirm1()">Save</button>
+    </div>
+  </ion-nav-buttons>
+
+  <ion-content class="has-header">
+
+    <div class="item item-divider">
+      Game Info
+    </div>
+
+    <div class="card">
+      <label class="item item-input">
+        <span class="input-label" style="text-align: left">New Game Title</span>
+        <input type="text" style="text-align: right;  width: 100px" placeholder="Enter Title" ng-model="gameInfo.name"/>
+      </label>
+      <label class="item item-input">
+        <span class="input-label" style="text-align: left">Amount</span>
+        <input type="text" style="text-align: right;  width: 100px" placeholder="Enter Amount"
+               ng-model="gameInfo.amount"/>
+      </label>
+      <label class="item item-input item-select">
+        <div class="input-label">
+          Rule
+        </div>
+        <select>
+          <option>200 Point Rule</option>
+          <option selected>Default Rule</option>
+          <option>120 Point Rule</option>
+        </select>
+      </label>
+
+    </div>
+
+
+    <div class="item item-divider">
+      Players List
+    </div>
+    <div class="list">
+      <div class="card">
+        <div class="row  my_scroll">
+          <div class="header col" ng-repeat="info in playerInfo">
+            <div class="col">
+              <div class="user-profile">
+                <ionic-letter-avatar avatarborder="true" data="{{info.firstName}}"></ionic-letter-avatar>
+                <input style="color: #e6db70" type="text" on-hold="removePlayer($index)"
+                       ng-model="info.firstName"> </input>
+                &lt;!&ndash;<img ng-src={{x.photo}}>&ndash;&gt;
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <button class="button button-clear icon ion-android-add-circle pull-right" ng-click="toggle(true)">Add Player
+    </button>
+
+
+    <div class="list" ng-show="showme">
+      <div class="card">
+        <div class="item item-divider">
+          Player Info
+        </div>
+        <div>
+          <label class="item item-input">
+            <span class="input-label" style="text-align: left">First Name</span>
+            <input type="text" style="text-align: right;  width: 100px" placeholder="Enter First Name" ng-change=""
+                   ng-model="info.firstName"/>
+          </label>
+          <label class="item item-input">
+            <span class="input-label" style="text-align: left">Last Name</span>
+            <input type="text" style="text-align: right;  width: 100px" placeholder="Enter Last Name"
+                   ng-model="info.lastName"/>
+          </label>
+          <label class="item item-input">
+            <span class="input-label" style="text-align: left">Age</span>
+            <input type="text" style="text-align: right;  width: 100px" placeholder="Enter Age" ng-model="info.age"/>
+          </label>
+          <label class="item item-input">
+            <span class="input-label" style="text-align: left">Gender</span>
+            <input type="text" style="text-align: right;  width: 100px" placeholder="Enter Age" ng-model="info.gender"/>
+          </label>
+        </div>
+        <button class="item-button-right button-clear icon ion-android-done pull-right" ng-click="addPlayer()">Ok
+        </button>
+      </div>
+    </div>
+
+    <div class="item item-divider">
+      Tracking
+    </div>
+    <div class="card">
+      <div class="list ">
+        <ul class="list">
+          <li class="item item-toggle">
+            Wild Card Tracking
+            <label class="toggle toggle-positive">
+              <input type="checkbox" value={{trackWildCard}}/>
+              <div class="track">
+                <div class="handle"></div>
+              </div>
+            </label>
+          </li>
+          <li class="item item-toggle">
+            Jackpot Tracking
+            <label class="toggle toggle-positive">
+              <input type="checkbox" ng-model="trackJackPot"/>
+              <div class="track">
+                <div class="handle"></div>
+              </div>
+            </label>
+          </li>
+          <li class="item item-toggle">
+            Location Tracking
+            <label class="toggle toggle-assertive">
+              <input type="checkbox" ng-model="trackLocation"/>
+              <div class="track">
+                <div class="handle"></div>
+              </div>
+            </label>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </ion-content>
+
+</ion-view>
+-->

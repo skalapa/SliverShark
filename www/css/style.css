@@ -1,0 +1,28 @@
+.user-profile {
+  margin-top: 00px;
+}
+
+.user-profile img {
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+}
+
+.my_scroll {
+  overflow-scrolling: touch;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-scrolling: touch;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+/* header bar background-color: #28323f
+sin-up page background: linear-gradient(169deg,#045e9e 40%,#73c2fb 100%);
+Table header -    background: linear-gradient(to bottom,#fff,#f2f3f7)
+table text color #6f737a #e6db70*/
+
+input[type="text"] {
+  width: 50px;
+  text-align: -webkit-center;
+  font-weight: 900;
+}

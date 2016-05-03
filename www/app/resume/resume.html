@@ -1,0 +1,59 @@
+<ion-view ng-controller="resumeCtrl">
+  <ion-nav-title class="title-left" ng-bind="gameInfo.name"></ion-nav-title>
+  <ion-nav-buttons side="right">
+    <div class="buttons" ng-click="addLine()">
+      <button class="icon ion-android-add button-clear"
+              type="submit" menu-toggle="right"
+              href="#/app/create"></button>
+    </div>
+  </ion-nav-buttons>
+
+  <ion-content>
+
+    <div class="row my_scroll" ng-repeat="x in detail">
+      <p>{{x.status}}</p>
+      <div class="header col" ng-repeat="p in x.playerInfo track by $index">
+        <div class="col">
+          <div class="user-profile">
+            <ionic-letter-avatar avatarborder="true" data="{{p.firstName}}"></ionic-letter-avatar>
+            <input style="color: #e6db70" type="text" ng-model="p.firstName"> </input>
+            <!--<img ng-src={{x.photo}}>-->
+          </div>
+        </div>
+
+        <div ng-repeat="y in x.scores track by $index">
+          <div style="padding: 5px" class="col">
+            <input type="text" maxlength="5" ng-model="y.r1"> </input>
+          </div>
+        </div>
+        <div class="col">
+        </div>
+        <div class="col">
+          <input style="color: #e6db70; background-color: white; text-wrap: avoid" type="text"
+                 ng-model="total(x.scores)"> </input>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+  <ion-footer-bar class="bar-dark">
+    <div class="buttons" ng-click="addLine()">
+      <button class="icon ion-android-add button-clear"
+              type="submit" menu-toggle="right"
+              href="#/app/create"></button>
+    </div>
+
+    <div class="bar bar-footer bar-dark">
+      <button
+        type="submit"
+        href="#/app/create" class="button button-clear icon ion-ios-plus-outline" ng-click="addLine()">Round
+      </button>
+
+      <button class="button button-clear icon ion-ios-checkmark-outline pull-right" ng-click="showConfirm()">Done
+      </button>
+    </div>
+
+  </ion-footer-bar>
+
+
+</ion-view>
+
